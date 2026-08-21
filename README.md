@@ -1,16 +1,64 @@
-# React + Vite
+# Cafe Aroma ☕
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+A modern, responsive React coffee shop application built as part of the FlyRank AI Internship "React App Development with AI" assignment (Frontend AI Engineering track, Week 3).
 
-Currently, two official plugins are available:
+## 🔗 Live Links
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- **Live App:** [cafe-aroma-ai-assignment.vercel.app](https://cafe-aroma-ai-assignment.vercel.app)
+- **GitHub Repo:** [github.com/Ayesha-Arshed/cafe-aroma-ai-assignment](https://github.com/Ayesha-Arshed/cafe-aroma-ai-assignment)
 
-## React Compiler
+## 📋 About the Project
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+Cafe Aroma is a frontend-only coffee shop web app featuring:
 
-## Expanding the Oxlint configuration
+- **Home** — hero section, featured "Today's Special," featured coffee/brews
+- **Menu** — categorized menu items (Espresso, Cold Brews, Teas & Chai, etc.) with search and filtering
+- **Product Detail** — full item view with description, price, calories, and add-to-cart with quantity selector
+- **Favorites** — saved items with quick "Order Item" and "Add All to Cart" actions
+- **Cart** — shopping bag with quantity controls, promo code field, order summary, pickup/delivery options
+- **Login / Signup** — styled auth forms with client-side validation (frontend-only, no real backend)
+- Fully responsive design with a mobile navigation menu
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and Oxlint's TypeScript related rules in your project.
+**Tech stack:** React + Vite, Tailwind CSS v4, React Router v7, Lucide React icons
+
+## 🤖 How AI Assisted Development
+
+This project was built largely independently using **Antigravity IDE** (powered by Gemini) as an AI development assistant, following an iterative, prompt-driven workflow:
+
+1. **Project scaffolding** — AI set up the entire Vite + React + Tailwind CSS v4 project structure, including routing and a themed Navbar, from a single descriptive prompt.
+2. **Feature expansion** — AI added a Product Detail page and Login/Signup pages with working client-side validation, based on a follow-up prompt describing the desired behavior.
+3. **Bug fixing through manual testing** — After each AI-generated feature, I manually tested the app in the browser and identified real issues (broken navigation links, incorrect scroll position on route change) that I then fed back to the AI as precise, targeted prompts to fix.
+4. **Clarifying questions** — Notably, the AI asked clarifying questions before starting the initial build (e.g., Tailwind CSS v4 vs v3, whether to include placeholder content) rather than making silent assumptions, which shaped early implementation decisions.
+
+The full sequence of prompts used, along with results and notes for each, is documented in [PROMPTS.md](./PROMPTS.md).
+
+## 🛠️ Manual Improvements & Debugging
+
+Examples of issues I identified through manual testing (not caught by the AI automatically) and fixed via targeted follow-up prompts:
+
+| Issue Found | How I Found It | Fix |
+| --- | --- | --- |
+| Product Detail page only linked from the Menu page — Home, Favorites, and Cart item cards did nothing | Manually clicking through every page after the initial feature build | Follow-up prompt specifying exactly which elements should/shouldn't trigger navigation (item cards vs. action buttons) |
+| Page scrolled to the bottom instead of the top after navigating to Product Detail | Noticed while testing navigation from the Home page | Added a ScrollToTop component using useLocation and useEffect, wrapped around the app's Routes |
+| Uncertainty about mobile responsiveness | Manually tested using Chrome DevTools device mode | Confirmed Navbar collapses correctly and all pages render properly on mobile — verified rather than assumed |
+
+## 📁 Project Structure
+
+```
+cafe-aroma/
+├── src/
+│   ├── components/ (Navbar, ScrollToTop, etc.)
+│   ├── pages/ (Home, Menu, ProductDetail, Favorites, Cart, Login, Signup)
+│   ├── data/ (mock menu data)
+│   ├── App.jsx
+│   └── main.jsx
+├── PROMPTS.md (full AI prompt log)
+└── README.md
+```
+
+## 🚀 Running Locally
+
+```bash
+npm install
+npm run dev
+```
